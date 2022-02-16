@@ -9,8 +9,11 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    @restaurant.save
-    redirect_to restaurants_path
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :new
+    end
   end
 
   def show
@@ -22,11 +25,7 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :category)
   end
-
 end
-
-
-
 # A visitor can add a new review to a restaurant
 # GET "restaurants/38/reviews/new"
 # POST "restaurants/38/reviews"

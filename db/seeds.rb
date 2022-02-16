@@ -18,7 +18,7 @@ categories = %w[chinese italian japanese french belgian]
 
   2.times do
     @review = Review.new(
-      content: "Great restaurant!",
+      content: 'Great restaurant!',
       rating: ratings.sample,
       restaurant_id: ratings.sample
     )
